@@ -9,9 +9,7 @@ Added comprehensive playback controls including volume and track seeking
 Set up proper error handling and user feedback
 Implemented proper authentication flow with Spotify
 
-Here’s a more formal and detailed version of your instruction:
 
----
 
 ##### Steps to Run the Application:
 
@@ -37,6 +35,3 @@ Here’s a more formal and detailed version of your instruction:
 4. **Access the Application**:  
    Once the server is running, open your browser and navigate to `http://localhost:5000` (or the port specified in the code) to use the application.
 
----
-
-Let me know if you want these steps formatted for a `README.md` or if you're using a framework like Flask so I can tailor it even more.
