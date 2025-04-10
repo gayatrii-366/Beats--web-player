@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Beats - Login</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&family=Righteous&display=swap" rel="stylesheet">
+    </head>
+    <body class="login-page">
+        <div class="login-container">
+            <div class="login-card">
+                <h1>Beats</h1>
+                <p class="login-subtitle">Connect with Spotify to start listening</p>
+                <div class="login-animation">
+                    <div class="pulse-circle"></div>
+                    <img src="{{ url_for('static', filename='img/spotify.jpg') }}" 
+                         alt="Spotify Logo" 
+                         class="spotify-logo">
+                </div>
+                <a href="{{ url_for('auth') }}" class="spotify-login-btn">
+                    Connect with Spotify
+                </a>
+            </div>
+        </div>
+
+        <div class="theme-switch-wrapper">
+            <label class="theme-switch" for="checkbox">
+                <input type="checkbox" id="checkbox" />
+                <div class="slider"></div>
+            </label>
+            <em>Theme</em>
+        </div>
+
+        <script>
+            // Initialize theme as soon as possible to prevent flash
+            (function() {
+                const theme = localStorage.getItem('theme') || 'dark';
+                document.documentElement.setAttribute('data-theme', theme);
+            })();
+
+            document.addEventListener('DOMContentLoaded', () => {
+                const themeToggle = document.getElementById('checkbox');
+                
+                // Set toggle state after DOM is loaded
+                const currentTheme = localStorage.getItem('theme') || 'dark';
+                themeToggle.checked = currentTheme === 'light';
+                
+                // Handle theme toggle with smooth transition
+                themeToggle.addEventListener('change', () => {
+                    const currentTheme = document.documentElement.getAttribute('data-theme');
+                    const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+                    
+                    document.documentElement.setAttribute('data-theme', newTheme);
+                    localStorage.setItem('theme', newTheme);
+                });
+            });
+        </script>
+    </body>
+</html>

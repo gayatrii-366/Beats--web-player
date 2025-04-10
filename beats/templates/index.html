@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Beats - Music Player</title>
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&family=Righteous&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    </head>
+    <body>
+        <div class="container">
+            <header>
+                <div class="logo-container">
+                    <img src="{{ url_for('static', filename='img/Beats.png') }}" alt="Beats Logo" class="app-logo">
+                    <h1 class="app-title">Beats</h1>
+                </div>
+                <div class="search-bar">
+                    <input type="text" id="search" placeholder="Search for songs...">
+                </div>
+            </header>
+            
+            <main>
+                <div class="player-container">
+                    <div class="now-playing">
+                        <img id="album-art" src="{{ url_for('static', filename='img/default-album.png') }}" alt="Album Art">
+                        <div class="track-info">
+                            <h2 id="track-title">No Track Playing</h2>
+                            <p id="artist-name">-</p>
+                        </div>
+                    </div>
+                    
+                    <div class="controls">
+                        <button id="prev-btn">Previous</button>
+                        <button id="play-btn">Play</button>
+                        <button id="next-btn">Next</button>
+                        <input type="range" id="volume" min="0" max="100" value="50">
+                    </div>
+                    
+                    <div class="progress-bar">
+                        <div id="progress"></div>
+                    </div>
+                </div>
+                
+                <div class="playlists-section">
+                    <div class="playlist">
+                        <h3>Current Playlist</h3>
+                        <ul id="track-list"></ul>
+                    </div>
+
+                    <div class="playlist">
+                        <h3>Your Playlists</h3>
+                        <div id="user-playlists" class="playlist-list"></div>
+                    </div>
+                </div>
+            </main>
+        </div>
+        
+        <div class="theme-switch-wrapper">
+            <label class="theme-switch" for="checkbox">
+                <input type="checkbox" id="checkbox" />
+                <div class="slider"></div>
+            </label>
+            <em>Theme</em>
+        </div>
+        
+        <script>
+            window.SPOTIFY_TOKEN = '{{ token }}';
+        </script>
+        <script src="https://sdk.scdn.co/spotify-player.js"></script>
+        <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+                <script src="/static/js/player.js"></script>
+    </body>
+</html>
